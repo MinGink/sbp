@@ -92,6 +92,7 @@ def main(args):
         vec_env = make_atari_env(env_id= config_dict['env'], n_envs=config_dict['n_threads'], seed=config_dict['seed'])
         vec_env = VecFrameStack(vec_env, n_stack=4)
         policy_kwargs = dict()
+
     elif args.env_type == "procgen":
         vec_env = make_procgen_env(config_dict)
 
@@ -159,7 +160,7 @@ if __name__ == '__main__':
     parser.add_argument('--n_threads', type=int, default=4, help='number of envs for multiprocessing')
     parser.add_argument('--gamma', type=float, default=0.99, help='discount factor')
     parser.add_argument('--gae_lambda', type=float, default=0.95, help='gae_lambda')
-    parser.add_argument('--total_timesteps', type=int, default=2000000, help='total number of training timesteps')
+    parser.add_argument('--total_timesteps', type=int, default=25_000_000, help='total number of training timesteps')
 
 
     args = parser.parse_args()
